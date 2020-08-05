@@ -75,40 +75,14 @@ function handleLinkFocus(e) {
         // enter
         e.preventDefault();
         const details = document.querySelectorAll(`.detail`);
-        const contentRow = document.querySelectorAll(`.content-row`);
-        for (let i = 0; i < contentRow.length; i++) {
-            const element = contentRow[i];
-            element.classList.add('hide');
-        }
 
-        if (index !== -1) {
-            console.log('next' + nextIndex, 'index' + index)
-            for (let i = 0; i < details.length; i++) {
-                const element = details[i];
-                element.classList.remove('active');
-            }
-            var detail = document.getElementById(index);
-            detail.classList.add('active');
-        }
-        else if (index == -1) {
-            return;
-        }
-    }
-    else if (e.keyCode === 8) {
-        // backspace
-        e.preventDefault();
-        const details = document.querySelectorAll(`.detail`);
-        const contentRow = document.querySelectorAll(`.content-row`);
-        for (let i = 0; i < details.length; i++) {
-            const element = details[i];
-            element.classList.remove('active');
-        }
-        for (let i = 0; i < contentRow.length; i++) {
-            const element = contentRow[i];
-            element.classList.remove('hide');
-        }
+        var content = document.getElementsByClassName('content')[0];
+        content.style.backgroundImage = `url('/assets/img/${index}.jpg')`;
+        content.style.backgroundColor = 'black';
+        content.scrollTop = 0;
 
-        console.log(index)
+        var contentRow = document.querySelector(".content > .content-row:nth-child(1)");
+        contentRow.style.marginTop = 215 + 'px';
     }
 }
 

@@ -11,6 +11,7 @@ body {
 
 .container {
   max-width: 1280px;
+  max-height: 750px;
   margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -69,14 +70,13 @@ body {
   white-space: nowrap;
   overflow: auto;
   min-width: 950px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
 }
 
 .content-row.hide {
   display: none;
-}
-
-img {
-  width: 1123px;
 }
 
 .box {
@@ -88,6 +88,10 @@ img {
   margin-right: 16px;
   margin-bottom: 40px;
   margin-top: 40px;
+}
+
+.box:focus {
+  outline: none;
 }
 
 .box.active {
