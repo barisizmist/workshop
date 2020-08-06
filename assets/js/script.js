@@ -3,6 +3,10 @@ const focusableInputElements = document.querySelectorAll(`.menu-list-item`);
 const focusable = [...focusableInputElements];
 const index = focusable.indexOf(document.activeElement);
 focusableInputElements[2].focus();
+
+
+
+
 document.addEventListener('keydown', function (e) {
     if (!menu.classList.contains('active')) {
         handleLinkFocus(e);
@@ -92,27 +96,34 @@ function handleMenuFocus(e) {
     const index = focusable.indexOf(document.activeElement);
     let nextIndex = 0;
     focusableInputElements[2].focus();
+
+
+
     if (e.keyCode === 38) {
         // up arrow
         e.preventDefault();
         for (let i = 0; i < focusable.length; i++) {
             const element = focusable[i];
-            element.classList.remove('active');
+            element.classList.remove('active', 'prev', 'next');
         }
         nextIndex = index > 0 ? index - 1 : 0;
         focusableInputElements[nextIndex].classList.add('active');
         focusableInputElements[nextIndex].focus();
+        nextIndex > 0 ? focusableInputElements[nextIndex - 1].classList.add('prev') : '';
+        focusableInputElements[nextIndex + 1].classList.add('next');
     }
     else if (e.keyCode === 40) {
         // down arrow
         e.preventDefault();
         for (let i = 0; i < focusable.length; i++) {
             const element = focusable[i];
-            element.classList.remove('active');
+            element.classList.remove('active', 'prev', 'next');
         }
         nextIndex = index + 1 < focusable.length ? index + 1 : index;
         focusableInputElements[nextIndex].classList.add('active');
         focusableInputElements[nextIndex].focus();
+        focusableInputElements[nextIndex - 1].classList.add('prev');
+        nextIndex + 1 != 5 ? focusableInputElements[nextIndex + 1].classList.add('next') : '';
     }
     else if (e.keyCode === 39) {
         // right arrow  
@@ -122,5 +133,6 @@ function handleMenuFocus(e) {
         fie[0].classList.add('active');
         fie[0].focus();
     }
+    // var x = document.querySelector(".menu-list-item.active").previousElementSibling.classList.add('prev');
 
 }

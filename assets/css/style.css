@@ -39,6 +39,7 @@ body {
 .menu-list {
   list-style: none;
   padding: 0;
+  overflow: hidden;
 }
 
 .menu-list-item {
@@ -55,13 +56,15 @@ body {
   outline: none;
 }
 
+.menu-list-item.prev, .menu-list-item.next {
+  color: #c9c9c9;
+}
+
 .menu-list-item.active {
   background-color: #7d8084;
   color: #fff;
-}
-
-.menu-list-item.prev, .menu-list-item.next {
-  color: #c9c9c9;
+  -webkit-box-shadow: 0 0 20px 3px #373737;
+          box-shadow: 0 0 20px 3px #373737;
 }
 
 .content {

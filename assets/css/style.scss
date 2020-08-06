@@ -34,6 +34,7 @@ body {
     &-list {
         list-style: none;
         padding: 0;
+        overflow: hidden;
 
         &-item {
             color: #6e6e6e;
@@ -48,14 +49,16 @@ body {
                 outline: none;
             }
 
-            &.active {
-                background-color: #7d8084;
-                color: #fff;
-            }
 
             &.prev,
             &.next {
                 color: #c9c9c9;
+            }
+
+            &.active {
+                background-color: #7d8084;
+                color: #fff;
+                box-shadow: 0 0 20px 3px #373737;
             }
         }
     }
