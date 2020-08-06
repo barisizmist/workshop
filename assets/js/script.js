@@ -1,10 +1,8 @@
 var menu = document.getElementsByClassName('menu')[0];
-const focusableInputElements = document.querySelectorAll(`.menu-list-item`);
-const focusable = [...focusableInputElements];
+const menuListItems = document.querySelectorAll(`.menu-list-item`);
+const focusable = [...menuListItems];
 const index = focusable.indexOf(document.activeElement);
-focusableInputElements[2].focus();
-
-
+menuListItems[2].focus();
 
 
 document.addEventListener('keydown', function (e) {
@@ -18,24 +16,24 @@ document.addEventListener('keydown', function (e) {
 });
 
 function handleLinkFocus(e) {
-    const focusableInputElements = document.querySelectorAll(`.box`);
-    const focusable = [...focusableInputElements];
+    const boxes = document.querySelectorAll(`.box`);
+    const focusable = [...boxes];
     const index = focusable.indexOf(document.activeElement);
     let nextIndex = 0;
     if (e.keyCode === 37) {
         // left arrow
         e.preventDefault();
         nextIndex = index > 0 ? index - 1 : 0;
-        focusableInputElements[nextIndex].focus();
+        boxes[nextIndex].focus();
         for (let i = 0; i < focusable.length; i++) {
             const element = focusable[i];
             element.classList.remove('active');
         }
-        focusableInputElements[nextIndex].classList.add('active');
+        boxes[nextIndex].classList.add('active');
         if (index == 0 && e.keyCode === 37) {
             menu.classList.add('active');
-            focusableInputElements[nextIndex].classList.remove('active');
-            focusableInputElements[nextIndex].blur();
+            boxes[nextIndex].classList.remove('active');
+            boxes[nextIndex].blur();
         }
     }
     else if (e.keyCode === 39) {
@@ -46,8 +44,8 @@ function handleLinkFocus(e) {
             const element = focusable[i];
             element.classList.remove('active');
         }
-        focusableInputElements[nextIndex].classList.add('active');
-        focusableInputElements[nextIndex].focus();
+        boxes[nextIndex].classList.add('active');
+        boxes[nextIndex].focus();
     }
     else if (e.keyCode === 38) {
         // up arrow
@@ -58,8 +56,8 @@ function handleLinkFocus(e) {
                 const element = focusable[i];
                 element.classList.remove('active');
             }
-            focusableInputElements[nextIndex].classList.add('active');
-            focusableInputElements[nextIndex].focus();
+            boxes[nextIndex].classList.add('active');
+            boxes[nextIndex].focus();
         }
     }
     else if (e.keyCode === 40) {
@@ -71,8 +69,8 @@ function handleLinkFocus(e) {
                 const element = focusable[i];
                 element.classList.remove('active');
             }
-            focusableInputElements[nextIndex].classList.add('active');
-            focusableInputElements[nextIndex].focus();
+            boxes[nextIndex].classList.add('active');
+            boxes[nextIndex].focus();
         }
     }
     else if (e.keyCode === 13) {
@@ -91,11 +89,11 @@ function handleLinkFocus(e) {
 }
 
 function handleMenuFocus(e) {
-    const focusableInputElements = document.querySelectorAll(`.menu-list-item`);
-    const focusable = [...focusableInputElements];
+    const menuListItems = document.querySelectorAll(`.menu-list-item`);
+    const focusable = [...menuListItems];
     const index = focusable.indexOf(document.activeElement);
     let nextIndex = 0;
-    focusableInputElements[2].focus();
+    menuListItems[2].focus();
 
 
 
@@ -107,10 +105,10 @@ function handleMenuFocus(e) {
             element.classList.remove('active', 'prev', 'next');
         }
         nextIndex = index > 0 ? index - 1 : 0;
-        focusableInputElements[nextIndex].classList.add('active');
-        focusableInputElements[nextIndex].focus();
-        nextIndex > 0 ? focusableInputElements[nextIndex - 1].classList.add('prev') : '';
-        focusableInputElements[nextIndex + 1].classList.add('next');
+        menuListItems[nextIndex].classList.add('active');
+        menuListItems[nextIndex].focus();
+        nextIndex > 0 ? menuListItems[nextIndex - 1].classList.add('prev') : '';
+        menuListItems[nextIndex + 1].classList.add('next');
     }
     else if (e.keyCode === 40) {
         // down arrow
@@ -120,10 +118,10 @@ function handleMenuFocus(e) {
             element.classList.remove('active', 'prev', 'next');
         }
         nextIndex = index + 1 < focusable.length ? index + 1 : index;
-        focusableInputElements[nextIndex].classList.add('active');
-        focusableInputElements[nextIndex].focus();
-        focusableInputElements[nextIndex - 1].classList.add('prev');
-        nextIndex + 1 != 5 ? focusableInputElements[nextIndex + 1].classList.add('next') : '';
+        menuListItems[nextIndex].classList.add('active');
+        menuListItems[nextIndex].focus();
+        menuListItems[nextIndex - 1].classList.add('prev');
+        nextIndex + 1 != 5 ? menuListItems[nextIndex + 1].classList.add('next') : '';
     }
     else if (e.keyCode === 39) {
         // right arrow  
@@ -133,6 +131,4 @@ function handleMenuFocus(e) {
         fie[0].classList.add('active');
         fie[0].focus();
     }
-    // var x = document.querySelector(".menu-list-item.active").previousElementSibling.classList.add('prev');
-
 }
