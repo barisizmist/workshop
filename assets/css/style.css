@@ -100,16 +100,4 @@ body {
 .box.active {
   background-color: #7d8084;
 }
-
-.new {
-  border: 2px solid red;
-}
-
-.detail {
-  display: none;
-}
-
-.detail.active {
-  display: block;
-}
 /*# sourceMappingURL=style.css.map */
