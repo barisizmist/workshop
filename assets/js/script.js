@@ -4,11 +4,9 @@ const focusable = [...menuListItems];
 const index = focusable.indexOf(document.activeElement);
 menuListItems[2].focus();
 
-
 document.addEventListener('keydown', function (e) {
     if (!menu.classList.contains('active')) {
         handleLinkFocus(e);
-
     }
     else {
         handleMenuFocus(e);
@@ -58,6 +56,8 @@ function handleLinkFocus(e) {
             }
             boxes[nextIndex].classList.add('active');
             boxes[nextIndex].focus();
+            var content = document.getElementsByClassName('content')[0];
+            content.scrollTop = 0;
         }
     }
     else if (e.keyCode === 40) {
@@ -79,7 +79,7 @@ function handleLinkFocus(e) {
         const details = document.querySelectorAll(`.detail`);
 
         var content = document.getElementsByClassName('content')[0];
-        content.style.backgroundImage = `url('/assets/img/${index}.jpg')`;
+        content.style.backgroundImage = `url('assets/img/${index}.jpg')`;
         content.style.backgroundColor = 'black';
         content.scrollTop = 0;
 
@@ -92,10 +92,6 @@ function handleMenuFocus(e) {
     const menuListItems = document.querySelectorAll(`.menu-list-item`);
     const focusable = [...menuListItems];
     const index = focusable.indexOf(document.activeElement);
-    let nextIndex = 0;
-    menuListItems[2].focus();
-
-
 
     if (e.keyCode === 38) {
         // up arrow
@@ -120,7 +116,7 @@ function handleMenuFocus(e) {
         nextIndex = index + 1 < focusable.length ? index + 1 : index;
         menuListItems[nextIndex].classList.add('active');
         menuListItems[nextIndex].focus();
-        menuListItems[nextIndex - 1].classList.add('prev');
+        nextIndex > 0 ? menuListItems[nextIndex - 1].classList.add('prev') : '';
         nextIndex + 1 != 5 ? menuListItems[nextIndex + 1].classList.add('next') : '';
     }
     else if (e.keyCode === 39) {
